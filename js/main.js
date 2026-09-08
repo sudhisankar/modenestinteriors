@@ -1,0 +1,290 @@
+/* ============================================================
+   MODNEST INTERIORS — MAIN JAVASCRIPT
+   Navigation, Animations, Forms, Counters
+   ============================================================ */
+
+/* ---- Company Info (single source of truth) ---- */
+const COMPANY = {
+  name: 'Modnest Interiors',
+  phones: ['+971 58 583 8876', '+971 50 884 8001', '+971 52 579 4242'],
+  email: 'modnestinteriors.ae@gmail.com',
+  address: 'Ajman Free Zone C1 Building, Ajman, United Arab Emirates',
+  whatsapp: 'https://wa.me/message/Y6HI7CH6TFZ4J1',
+  instagram: 'https://www.instagram.com/modnestinteriors_ae?igsi=MWZ4bWphNGYyOWVhaw==&utm_source=ig_contact_invite',
+};
+
+/* ---- DOM Ready ---- */
+document.addEventListener('DOMContentLoaded', () => {
+  initHeader();
+  initMobileNav();
+  initRevealAnimations();
+  initCounters();
+  initForms();
+  initSmoothScroll();
+  setActiveNavLink();
+  initFileInputs();
+});
+
+/* ============================================================
+   HEADER — scroll behavior
+   ============================================================ */
+function initHeader() {
+  const header = document.querySelector('.site-header');
+  if (!header) return;
+
+  const heroEl = document.querySelector('.hero');
+
+  const update = () => {
+    const scrolled = window.scrollY > 60;
+    header.classList.toggle('scrolled', scrolled);
+    // Only apply transparent mode on homepage hero
+    if (heroEl) {
+      header.classList.toggle('hero-page', !scrolled);
+    } else {
+      header.classList.add('scrolled');
+    }
+  };
+
+  window.addEventListener('scroll', update, { passive: true });
+  update();
+}
+
+/* ============================================================
+   MOBILE NAVIGATION
+   ============================================================ */
+function initMobileNav() {
+  const hamburger = document.querySelector('.hamburger');
+  const mobileNav = document.querySelector('.mobile-nav');
+  const mobileLinks = document.querySelectorAll('.mobile-nav .nav-link, .mobile-nav .btn-cta');
+
+  if (!hamburger || !mobileNav) return;
+
+  const toggleNav = (open) => {
+    hamburger.classList.toggle('open', open);
+    mobileNav.classList.toggle('open', open);
+    document.body.style.overflow = open ? 'hidden' : '';
+  };
+
+  hamburger.addEventListener('click', () => {
+    toggleNav(!hamburger.classList.contains('open'));
+  });
+
+  mobileLinks.forEach(link => {
+    link.addEventListener('click', () => toggleNav(false));
+  });
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') toggleNav(false);
+  });
+}
+
+/* ============================================================
+   REVEAL ANIMATIONS — Intersection Observer
+   ============================================================ */
+function initRevealAnimations() {
+  const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (prefersReduced) {
+    document.querySelectorAll('.reveal, .reveal-left, .reveal-right').forEach(el => {
+      el.classList.add('revealed');
+    });
+    return;
+  }
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('revealed');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, {
+    threshold: 0.12,
+    rootMargin: '0px 0px -40px 0px',
+  });
+
+  document.querySelectorAll('.reveal, .reveal-left, .reveal-right').forEach(el => {
+    observer.observe(el);
+  });
+}
+
+/* ============================================================
+   ANIMATED COUNTERS
+   ============================================================ */
+function initCounters() {
+  const counters = document.querySelectorAll('[data-counter]');
+  if (!counters.length) return;
+
+  const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  const animateCounter = (el, target, suffix) => {
+    if (prefersReduced) {
+      el.textContent = target + suffix;
+      return;
+    }
+    const duration = 2000;
+    const start = performance.now();
+    const startVal = 0;
+
+    const step = (now) => {
+      const progress = Math.min((now - start) / duration, 1);
+      const ease = 1 - Math.pow(1 - progress, 3); // cubic ease out
+      const current = Math.floor(startVal + (target - startVal) * ease);
+      el.textContent = current + suffix;
+      if (progress < 1) requestAnimationFrame(step);
+    };
+
+    requestAnimationFrame(step);
+  };
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const el = entry.target;
+        const target = parseInt(el.dataset.counter, 10);
+        const suffix = el.dataset.suffix || '';
+        animateCounter(el, target, suffix);
+        observer.unobserve(el);
+      }
+    });
+  }, { threshold: 0.5 });
+
+  counters.forEach(counter => observer.observe(counter));
+}
+
+/* ============================================================
+   FORMS — Validation & Submission
+   ============================================================ */
+function initForms() {
+  document.querySelectorAll('.enquiry-form, .application-form').forEach(form => {
+    form.addEventListener('submit', handleFormSubmit);
+    form.querySelectorAll('input, select, textarea').forEach(field => {
+      field.addEventListener('blur', () => validateField(field));
+      field.addEventListener('input', () => {
+        if (field.closest('.form-group').classList.contains('has-error')) {
+          validateField(field);
+        }
+      });
+    });
+  });
+}
+
+function validateField(field) {
+  const group = field.closest('.form-group');
+  if (!group) return true;
+
+  const errorEl = group.querySelector('.form-error');
+  let valid = true;
+  let errorMsg = '';
+
+  if (field.hasAttribute('required') && !field.value.trim()) {
+    valid = false;
+    errorMsg = 'This field is required.';
+  } else if (field.type === 'email' && field.value && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(field.value)) {
+    valid = false;
+    errorMsg = 'Please enter a valid email address.';
+  } else if (field.type === 'tel' && field.value && !/^[\+\d\s\-\(\)]{7,}$/.test(field.value)) {
+    valid = false;
+    errorMsg = 'Please enter a valid phone number.';
+  } else if (field.type === 'url' && field.value && !/^https?:\/\/.+/.test(field.value)) {
+    valid = false;
+    errorMsg = 'Please enter a valid URL (starting with http:// or https://).';
+  }
+
+  group.classList.toggle('has-error', !valid);
+  field.classList.toggle('error', !valid);
+  if (errorEl) errorEl.textContent = errorMsg;
+
+  return valid;
+}
+
+function handleFormSubmit(e) {
+  e.preventDefault();
+  const form = e.target;
+  const fields = form.querySelectorAll('input[required], select[required], textarea[required]');
+  let allValid = true;
+
+  fields.forEach(field => {
+    if (!validateField(field)) allValid = false;
+  });
+
+  if (!allValid) {
+    const firstError = form.querySelector('.has-error input, .has-error select, .has-error textarea');
+    if (firstError) firstError.focus();
+    return;
+  }
+
+  // Show loading state
+  const submitBtn = form.querySelector('[type="submit"]');
+  const originalText = submitBtn.textContent;
+  submitBtn.disabled = true;
+  submitBtn.textContent = 'Sending…';
+
+  // Simulate async submission (replace with real backend later)
+  setTimeout(() => {
+    submitBtn.disabled = false;
+    submitBtn.textContent = originalText;
+
+    const successEl = form.closest('.form-card')?.querySelector('.form-success');
+    const formContent = form.closest('.form-card')?.querySelector('.form-content');
+
+    if (successEl) {
+      if (formContent) formContent.style.display = 'none';
+      successEl.classList.add('active');
+      successEl.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    }
+
+    form.reset();
+  }, 1200);
+}
+
+/* ============================================================
+   FILE INPUT LABELS
+   ============================================================ */
+function initFileInputs() {
+  document.querySelectorAll('.file-input-wrap').forEach(wrap => {
+    const input = wrap.querySelector('input[type="file"]');
+    const label = wrap.querySelector('.file-input-label');
+    const btn = wrap.querySelector('.file-btn');
+
+    if (!input) return;
+
+    if (btn) btn.addEventListener('click', () => input.click());
+    wrap.addEventListener('click', (e) => {
+      if (e.target === wrap) input.click();
+    });
+
+    input.addEventListener('change', () => {
+      if (input.files.length && label) {
+        label.textContent = Array.from(input.files).map(f => f.name).join(', ');
+      }
+    });
+  });
+}
+
+/* ============================================================
+   SMOOTH SCROLL for anchor links
+   ============================================================ */
+function initSmoothScroll() {
+  document.querySelectorAll('a[href^="#"]').forEach(link => {
+    link.addEventListener('click', (e) => {
+      const target = document.querySelector(link.getAttribute('href'));
+      if (target) {
+        e.preventDefault();
+        const headerH = document.querySelector('.site-header')?.offsetHeight || 80;
+        const top = target.getBoundingClientRect().top + window.scrollY - headerH - 16;
+        window.scrollTo({ top, behavior: 'smooth' });
+      }
+    });
+  });
+}
+
+/* ============================================================
+   ACTIVE NAV LINK
+   ============================================================ */
+function setActiveNavLink() {
+  const page = window.location.pathname.split('/').pop() || 'index.html';
+  document.querySelectorAll('.nav-link').forEach(link => {
+    const href = link.getAttribute('href') || '';
+    link.classList.toggle('active', href === page || (page === '' && href === 'index.html'));
+  });
+}

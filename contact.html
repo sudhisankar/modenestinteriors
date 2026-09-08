@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contact | Modnest Interiors — Interior Design UAE</title>
+  <meta name="description" content="Get in touch with Modnest Interiors. Contact our team to discuss your interior design or fit-out project in the UAE. Based in Ajman Free Zone." />
+  <link rel="icon" type="image/png" href="assets/logo.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="css/style.css" />
+  <style>
+    /* Contact page specific styles */
+    .contact-hero-img {
+      position: relative;
+      height: 320px;
+      overflow: hidden;
+      margin-bottom: 0;
+    }
+    .contact-hero-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .contact-hero-img::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to bottom, rgba(26,24,22,0.35), rgba(26,24,22,0.15));
+    }
+    .insta-section-contact {
+      padding-block: var(--section-py);
+      background: var(--bg);
+    }
+    .insta-cta-box {
+      background: var(--cream);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      padding: 3rem;
+      text-align: center;
+      max-width: 600px;
+      margin-inline: auto;
+    }
+    .insta-icon-large {
+      width: 64px;
+      height: 64px;
+      background: linear-gradient(135deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+      border-radius: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-inline: auto;
+      margin-bottom: 1.25rem;
+    }
+    .map-section {
+      background: var(--cream);
+      padding-block: var(--section-py);
+    }
+    .map-placeholder {
+      background: var(--beige);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      height: 280px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 1rem;
+      color: var(--text-muted);
+      margin-top: 2rem;
+    }
+    .map-placeholder svg { color: var(--gold); }
+    .map-placeholder p { font-size: 0.9rem; text-align: center; max-width: 30ch; }
+    .map-placeholder strong { display: block; font-size: 1rem; color: var(--charcoal); margin-bottom: 0.25rem; }
+  </style>
+</head>
+<body>
+
+  <!-- ========== HEADER ========== -->
+  <header class="site-header scrolled" role="banner">
+    <div class="container">
+      <div class="header-inner">
+        <a href="index.html" class="logo-link" aria-label="Modnest Interiors Home">
+          <img src="assets/logo.png" alt="Modnest Interiors Logo" class="logo-img" />
+        </a>
+        <nav class="nav-links" role="navigation" aria-label="Primary navigation">
+          <a href="index.html" class="nav-link">Home</a>
+          <a href="about.html" class="nav-link">About</a>
+          <a href="services.html" class="nav-link">Services</a>
+          <a href="careers.html" class="nav-link">Careers</a>
+          <a href="contact.html" class="nav-link active">Contact</a>
+        </nav>
+        <a href="contact.html" class="btn-cta">Get a Consultation</a>
+        <button class="hamburger" aria-label="Open navigation menu" aria-expanded="false" aria-controls="mobile-nav">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <nav class="mobile-nav" id="mobile-nav" role="navigation" aria-label="Mobile navigation">
+    <div class="mobile-logo"><img src="assets/logo.png" alt="Modnest Interiors Logo" /></div>
+    <a href="index.html" class="nav-link">Home</a>
+    <a href="about.html" class="nav-link">About</a>
+    <a href="services.html" class="nav-link">Services</a>
+    <a href="careers.html" class="nav-link">Careers</a>
+    <a href="contact.html" class="nav-link">Contact</a>
+    <a href="contact.html" class="btn-cta">Get a Consultation</a>
+  </nav>
+
+  <main>
+    <!-- ========== PAGE HERO ========== -->
+    <section class="page-hero" aria-labelledby="contact-page-title">
+      <div class="container">
+        <span class="page-hero-label">Get In Touch</span>
+        <h1 class="page-hero-title" id="contact-page-title">Let's Talk About Your Project</h1>
+        <p class="page-hero-subtitle">Have a project in mind? Get in touch with Modnest Interiors and let's discuss how we can transform your space.</p>
+      </div>
+    </section>
+
+    <!-- ========== CONTACT SECTION ========== -->
+    <section class="contact-page" aria-labelledby="contact-section-heading">
+      <div class="container">
+        <div class="contact-grid">
+
+          <!-- LEFT: Contact Info -->
+          <div class="contact-info reveal-left">
+            <h2 id="contact-section-heading">Contact Information</h2>
+            <p>Reach out via any of the channels below. We look forward to hearing about your project.</p>
+
+            <div class="contact-detail">
+              <div class="contact-detail-icon" aria-hidden="true">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+              </div>
+              <div>
+                <p class="contact-detail-label">Address</p>
+                <p class="contact-detail-value">Ajman Free Zone C1 Building,<br />Ajman, United Arab Emirates</p>
+              </div>
+            </div>
+
+            <div class="contact-detail">
+              <div class="contact-detail-icon" aria-hidden="true">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81 19.79 19.79 0 01.01 1.18 2 2 0 012 0h3a2 2 0 012 1.72c.13.96.36 1.9.7 2.81a2 2 0 01-.45 2.11L6.09 7.91A16 16 0 0016.09 17.9l1.27-1.27a2 2 0 012.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0122 16.92z"/></svg>
+              </div>
+              <div>
+                <p class="contact-detail-label">Phone</p>
+                <div class="contact-detail-value">
+                  <a href="tel:+971585838876">+971 58 583 8876</a>
+                  <a href="tel:+971508848001">+971 50 884 8001</a>
+                  <a href="tel:+971525794242">+971 52 579 4242</a>
+                </div>
+              </div>
+            </div>
+
+            <div class="contact-detail">
+              <div class="contact-detail-icon" aria-hidden="true">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+              </div>
+              <div>
+                <p class="contact-detail-label">Email</p>
+                <div class="contact-detail-value">
+                  <a href="mailto:modnestinteriors.ae@gmail.com">modnestinteriors.ae@gmail.com</a>
+                </div>
+              </div>
+            </div>
+
+            <div class="contact-detail">
+              <div class="contact-detail-icon" aria-hidden="true">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.374 0 0 5.373 0 12c0 2.117.549 4.1 1.504 5.823L.057 23.196a.75.75 0 00.919.92l5.454-1.429A11.95 11.95 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.885 0-3.645-.52-5.155-1.42l-.358-.214-3.731.977.995-3.643-.231-.373A9.975 9.975 0 012 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/></svg>
+              </div>
+              <div>
+                <p class="contact-detail-label">WhatsApp</p>
+                <div class="contact-detail-value">
+                  <a href="https://wa.me/message/Y6HI7CH6TFZ4J1" target="_blank" rel="noopener noreferrer">Chat with us on WhatsApp</a>
+                </div>
+              </div>
+            </div>
+
+            <div class="contact-social">
+              <h4>Follow Us</h4>
+              <div style="display:flex;gap:1rem;align-items:center;flex-wrap:wrap;">
+                <a href="https://www.instagram.com/modnestinteriors_ae?igsi=MWZ4bWphNGYyOWVhaw==&utm_source=ig_contact_invite"
+                   target="_blank" rel="noopener noreferrer"
+                   class="btn btn-outline btn-sm"
+                   style="gap:0.5rem;"
+                   aria-label="Follow Modnest Interiors on Instagram">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+                  @modnestinteriors_ae
+                </a>
+                <a href="https://wa.me/message/Y6HI7CH6TFZ4J1"
+                   target="_blank" rel="noopener noreferrer"
+                   class="btn btn-whatsapp btn-sm"
+                   style="gap:0.5rem;"
+                   aria-label="Chat on WhatsApp">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.374 0 0 5.373 0 12c0 2.117.549 4.1 1.504 5.823L.057 23.196a.75.75 0 00.919.92l5.454-1.429A11.95 11.95 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.885 0-3.645-.52-5.155-1.42l-.358-.214-3.731.977.995-3.643-.231-.373A9.975 9.975 0 012 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/></svg>
+                  WhatsApp
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <!-- RIGHT: Enquiry Form -->
+          <div class="reveal-right">
+            <div class="form-card">
+              <div class="form-content">
+                <h3 class="form-title">Send an Enquiry</h3>
+                <p class="form-subtitle">Fill in the form below and our team will respond promptly.</p>
+                <form class="enquiry-form" id="enquiry-form" novalidate>
+
+                  <div class="form-row">
+                    <div class="form-group">
+                      <label for="contact-name">Full Name <span style="color:#C0392B" aria-hidden="true">*</span></label>
+                      <input type="text" id="contact-name" name="fullName" placeholder="Your full name" required autocomplete="name" />
+                      <span class="form-error" role="alert"></span>
+                    </div>
+                    <div class="form-group">
+                      <label for="contact-email">Email Address <span style="color:#C0392B" aria-hidden="true">*</span></label>
+                      <input type="email" id="contact-email" name="email" placeholder="your@email.com" required autocomplete="email" />
+                      <span class="form-error" role="alert"></span>
+                    </div>
+                  </div>
+
+                  <div class="form-row">
+                    <div class="form-group">
+                      <label for="contact-phone">Phone Number <span style="color:#C0392B" aria-hidden="true">*</span></label>
+                      <input type="tel" id="contact-phone" name="phone" placeholder="+971 XX XXX XXXX" required autocomplete="tel" />
+                      <span class="form-error" role="alert"></span>
+                    </div>
+                    <div class="form-group">
+                      <label for="contact-project-type">Project Type <span style="color:#C0392B" aria-hidden="true">*</span></label>
+                      <select id="contact-project-type" name="projectType" required>
+                        <option value="" disabled selected>Select project type</option>
+                        <option value="Residential">Residential</option>
+                        <option value="Commercial">Commercial</option>
+                        <option value="Hospitality">Hospitality</option>
+                        <option value="Other">Other</option>
+                      </select>
+                      <span class="form-error" role="alert"></span>
+                    </div>
+                  </div>
+
+                  <div class="form-row">
+                    <div class="form-group">
+                      <label for="contact-service">Service Required <span style="color:#C0392B" aria-hidden="true">*</span></label>
+                      <select id="contact-service" name="service" required>
+                        <option value="" disabled selected>Select a service</option>
+                        <option value="Interior Design">Interior Design</option>
+                        <option value="Space Planning">Space Planning</option>
+                        <option value="3D Visualization">3D Visualization</option>
+                        <option value="Fit-Out Works">Fit-Out Works</option>
+                        <option value="Interior Decoration">Interior Decoration</option>
+                        <option value="Complete Space Transformation">Complete Space Transformation</option>
+                        <option value="Other">Other</option>
+                      </select>
+                      <span class="form-error" role="alert"></span>
+                    </div>
+                    <div class="form-group">
+                      <label for="contact-location">Project Location</label>
+                      <input type="text" id="contact-location" name="location" placeholder="e.g. Dubai, Ajman, Sharjah" />
+                      <span class="form-error" role="alert"></span>
+                    </div>
+                  </div>
+
+                  <div class="form-group">
+                    <label for="contact-budget">Estimated Budget</label>
+                    <select id="contact-budget" name="budget">
+                      <option value="" disabled selected>Select a budget range (optional)</option>
+                      <option value="Under AED 50,000">Under AED 50,000</option>
+                      <option value="AED 50,000 – 150,000">AED 50,000 – 150,000</option>
+                      <option value="AED 150,000 – 500,000">AED 150,000 – 500,000</option>
+                      <option value="AED 500,000 – 1,000,000">AED 500,000 – 1,000,000</option>
+                      <option value="Over AED 1,000,000">Over AED 1,000,000</option>
+                      <option value="To be discussed">To be discussed</option>
+                    </select>
+                    <span class="form-error" role="alert"></span>
+                  </div>
+
+                  <div class="form-group">
+                    <label for="contact-message">Message <span style="color:#C0392B" aria-hidden="true">*</span></label>
+                    <textarea id="contact-message" name="message" placeholder="Tell us about your project — what you have in mind, the space size, timeline, and any specific requirements…" required rows="5"></textarea>
+                    <span class="form-error" role="alert"></span>
+                  </div>
+
+                  <button type="submit" class="btn btn-primary btn-lg" style="width:100%;justify-content:center;" id="submit-enquiry">
+                    Submit Enquiry
+                  </button>
+                </form>
+              </div>
+              <div class="form-success" role="alert">
+                <div class="success-icon" aria-hidden="true">
+                  <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+                </div>
+                <h3 class="success-title">Enquiry Sent Successfully</h3>
+                <p class="success-text">Thank you for contacting Modnest Interiors. We have received your enquiry and will get back to you shortly to discuss your project.<br /><br />In the meantime, you can reach us directly via WhatsApp or phone.</p>
+                <div style="margin-top:2rem;display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;">
+                  <a href="https://wa.me/message/Y6HI7CH6TFZ4J1" class="btn btn-whatsapp" target="_blank" rel="noopener noreferrer" aria-label="Chat on WhatsApp">WhatsApp Us</a>
+                  <a href="index.html" class="btn btn-outline">Back to Home</a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== MAP / LOCATION ========== -->
+    <section class="map-section" aria-labelledby="location-heading">
+      <div class="container">
+        <div class="text-center">
+          <span class="section-label">Find Us</span>
+          <h2 class="section-title" id="location-heading">Our Location</h2>
+          <p class="section-subtitle">We are based in the Ajman Free Zone, Ajman, United Arab Emirates.</p>
+        </div>
+        <div class="map-placeholder reveal" role="img" aria-label="Location: Ajman Free Zone C1 Building, Ajman, UAE">
+          <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          <p>
+            <strong>Ajman Free Zone C1 Building</strong>
+            Ajman, United Arab Emirates
+          </p>
+          <a href="https://maps.google.com/?q=Ajman+Free+Zone+Ajman+UAE" target="_blank" rel="noopener noreferrer" class="btn btn-outline btn-sm" aria-label="Open in Google Maps">
+            Open in Google Maps
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== INSTAGRAM SECTION ========== -->
+    <section class="insta-section-contact" aria-labelledby="insta-heading">
+      <div class="container">
+        <div class="insta-cta-box reveal">
+          <div class="insta-icon-large" aria-hidden="true">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+          </div>
+          <h3 id="insta-heading" style="font-family:var(--serif);font-size:1.6rem;color:var(--charcoal);margin-bottom:0.75rem;">Follow Us on Instagram</h3>
+          <p style="font-size:0.9rem;color:var(--text-muted);margin-bottom:1.75rem;line-height:1.7;">Stay up to date with our latest projects, design inspiration, and company news on Instagram.</p>
+          <a href="https://www.instagram.com/modnestinteriors_ae?igsi=MWZ4bWphNGYyOWVhaw==&utm_source=ig_contact_invite"
+             target="_blank"
+             rel="noopener noreferrer"
+             class="btn btn-primary"
+             aria-label="Follow Modnest Interiors on Instagram">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+            @modnestinteriors_ae
+          </a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ========== FOOTER ========== -->
+  <footer class="site-footer" role="contentinfo">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <img src="assets/logo.png" alt="Modnest Interiors Logo" class="logo-footer" />
+          <p>Transforming spaces with creativity, quality, and innovation.</p>
+          <div class="social-links">
+            <a href="https://www.instagram.com/modnestinteriors_ae?igsi=MWZ4bWphNGYyOWVhaw==&utm_source=ig_contact_invite" class="social-link" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg></a>
+            <a href="https://wa.me/message/Y6HI7CH6TFZ4J1" class="social-link" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.374 0 0 5.373 0 12c0 2.117.549 4.1 1.504 5.823L.057 23.196a.75.75 0 00.919.92l5.454-1.429A11.95 11.95 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.885 0-3.645-.52-5.155-1.42l-.358-.214-3.731.977.995-3.643-.231-.373A9.975 9.975 0 012 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/></svg></a>
+          </div>
+        </div>
+        <div>
+          <p class="footer-heading">Navigation</p>
+          <ul class="footer-links"><li><a href="index.html">Home</a></li><li><a href="about.html">About Us</a></li><li><a href="services.html">Services</a></li><li><a href="careers.html">Careers</a></li><li><a href="contact.html">Contact</a></li></ul>
+        </div>
+        <div>
+          <p class="footer-heading">Services</p>
+          <ul class="footer-links"><li><a href="services.html">Interior Design</a></li><li><a href="services.html">Space Planning</a></li><li><a href="services.html">3D Visualization</a></li><li><a href="services.html">Fit-Out Works</a></li><li><a href="services.html">Interior Decoration</a></li></ul>
+        </div>
+        <div>
+          <p class="footer-heading">Contact</p>
+          <ul class="footer-contact">
+            <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg><span>Ajman Free Zone C1 Building, Ajman, UAE</span></li>
+            <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81 19.79 19.79 0 01.01 1.18 2 2 0 012 0h3a2 2 0 012 1.72c.13.96.36 1.9.7 2.81a2 2 0 01-.45 2.11L6.09 7.91A16 16 0 0016.09 17.9l1.27-1.27a2 2 0 012.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0122 16.92z"/></svg><span><a href="tel:+971585838876">+971 58 583 8876</a><br/><a href="tel:+971508848001">+971 50 884 8001</a><br/><a href="tel:+971525794242">+971 52 579 4242</a></span></li>
+            <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg><a href="mailto:modnestinteriors.ae@gmail.com">modnestinteriors.ae@gmail.com</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p class="footer-copyright">&copy; 2026 Modnest Interiors. All Rights Reserved.</p>
+        <p class="footer-copyright">Interior Design &amp; Fit-Out Company, Ajman, UAE</p>
+      </div>
+    </div>
+  </footer>
+
+  <a href="https://wa.me/message/Y6HI7CH6TFZ4J1" class="whatsapp-fab" target="_blank" rel="noopener noreferrer" aria-label="Chat with Modnest Interiors on WhatsApp">
+    <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.374 0 0 5.373 0 12c0 2.117.549 4.1 1.504 5.823L.057 23.196a.75.75 0 00.919.92l5.454-1.429A11.95 11.95 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.885 0-3.645-.52-5.155-1.42l-.358-.214-3.731.977.995-3.643-.231-.373A9.975 9.975 0 012 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/></svg>
+  </a>
+
+  <script src="js/main.js" defer></script>
+</body>
+</html>
