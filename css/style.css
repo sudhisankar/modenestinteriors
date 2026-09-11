@@ -4,7 +4,7 @@
    ============================================================ */
 
 /* ---- Google Fonts ---- */
-@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Inter:wght@300;400;500;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Chilanka&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Inter:wght@300;400;500;600&display=swap');
 
 /* ---- CSS Custom Properties ---- */
 :root {
@@ -24,7 +24,7 @@
   --border-light:  rgba(180,160,130,0.12);
 
   --serif:  'Cormorant Garamond', Georgia, serif;
-  --sans:   'Inter', system-ui, -apple-system, sans-serif;
+  --sans:   'Chilanka', system-ui, -apple-system, sans-serif;
 
   --radius-sm:  4px;
   --radius-md:  8px;
@@ -271,16 +271,9 @@ h1, h2, h3, h4 {
   left: 0;
   right: 0;
   z-index: 1000;
-  transition: background var(--transition), box-shadow var(--transition), padding var(--transition);
-  padding: 1.25rem 0;
-}
-
-.site-header.scrolled {
-  background: rgba(250,248,245,0.97);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
+  background: #FFFFFF;
   box-shadow: 0 1px 20px rgba(44,42,40,0.08);
-  padding: 0.85rem 0;
+  padding: 1 rem 0;
 }
 
 .header-inner {
@@ -297,27 +290,11 @@ h1, h2, h3, h4 {
 }
 
 .logo-img {
-  height: 64px;
+  height: 85px;
   width: auto;
-  transition: height var(--transition);
   /* Ensure logo retains natural proportions and looks premium */
   object-fit: contain;
   object-position: left center;
-}
-
-.scrolled .logo-img { height: 50px; }
-
-/* On transparent header (hero), give logo a very subtle backing for contrast */
-.site-header:not(.scrolled) .logo-link {
-  padding: 0.35rem 0.75rem;
-  background: rgba(255,255,255,0.08);
-  border-radius: var(--radius-sm);
-  backdrop-filter: blur(4px);
-  -webkit-backdrop-filter: blur(4px);
-  transition: background var(--transition);
-}
-.site-header:not(.scrolled) .logo-link:hover {
-  background: rgba(255,255,255,0.14);
 }
 
 .nav-links {
@@ -351,17 +328,7 @@ h1, h2, h3, h4 {
 .nav-link:hover, .nav-link.active { color: var(--gold); }
 .nav-link:hover::after, .nav-link.active::after { width: 100%; }
 
-/* Header on transparent (hero) sections */
-.site-header:not(.scrolled) .nav-link { color: rgba(255,255,255,0.9); }
-.site-header:not(.scrolled) .nav-link:hover { color: var(--white); }
-.site-header:not(.scrolled) .btn-cta {
-  border-color: rgba(255,255,255,0.8);
-  color: var(--white);
-}
-.site-header:not(.scrolled) .btn-cta:hover {
-  background: var(--white);
-  color: var(--charcoal);
-}
+
 
 .btn-cta {
   padding: 0.65rem 1.5rem;
@@ -396,7 +363,7 @@ h1, h2, h3, h4 {
   transition: var(--transition);
   transform-origin: center;
 }
-.site-header:not(.scrolled) .hamburger span { background: var(--white); }
+
 .hamburger.open span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
 .hamburger.open span:nth-child(2) { opacity: 0; transform: scaleX(0); }
 .hamburger.open span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
@@ -635,30 +602,43 @@ h1, h2, h3, h4 {
   margin-top: 0.25rem;
 }
 
-.intro-pillars {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 0.75rem 1.5rem;
-  margin-top: 2rem;
-}
-
-.intro-pillar {
+.intro-marquee-wrapper {
+  width: 100%;
+  overflow: hidden;
+  background: var(--charcoal);
+  color: var(--white);
+  padding: 1.25rem 0;
+  margin-bottom: 4rem;
+  position: relative;
   display: flex;
+}
+
+.intro-marquee {
+  display: flex;
+  white-space: nowrap;
+  animation: marquee-scroll 25s linear infinite;
   align-items: center;
-  gap: 0.6rem;
-  font-size: 0.875rem;
-  color: var(--text-body);
 }
 
-.intro-pillar::before {
-  content: '';
-  width: 4px;
-  height: 4px;
-  border-radius: 50%;
-  background: var(--gold);
-  flex-shrink: 0;
+.intro-marquee span {
+  font-family: var(--sans);
+  font-size: 0.95rem;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  padding: 0 1.5rem;
 }
 
+.intro-marquee .dot {
+  color: var(--gold);
+  font-size: 1.5rem;
+  padding: 0;
+}
+
+@keyframes marquee-scroll {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
 /* ============================================================
    STATS SECTION
    ============================================================ */
@@ -1053,18 +1033,11 @@ h1, h2, h3, h4 {
 }
 
 .footer-brand .logo-footer {
-  height: 56px;
+  height: 90px;
   width: auto;
   margin-bottom: 1.5rem;
-  /* Logo PNG has a solid cream background — do not invert.
-     Remove the filter so the warm-toned logo renders naturally.
-     A subtle brightness reduction keeps it elegant on the dark footer. */
   filter: brightness(0.92);
   opacity: 0.9;
-  border-radius: var(--radius-sm);
-  /* Slight padding creates a clean framing effect */
-  padding: 6px 10px;
-  background: rgba(243,237,227,0.08);
 }
 
 .footer-brand p {
