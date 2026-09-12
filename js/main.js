@@ -23,6 +23,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initSmoothScroll();
   setActiveNavLink();
   initFileInputs();
+  initFAB();
 });
 
 /* ============================================================
@@ -288,3 +289,26 @@ function setActiveNavLink() {
     link.classList.toggle('active', href === page || (page === '' && href === 'index.html'));
   });
 }
+
+/* ============================================================
+   FLOATING ACTION BUTTON
+   ============================================================ */
+function initFAB() {
+  const fabContainer = document.querySelector('.fab-container');
+  const fabMain = document.querySelector('.fab-main');
+  
+  if (!fabContainer || !fabMain) return;
+  
+  fabMain.addEventListener('click', (e) => {
+    e.preventDefault();
+    fabContainer.classList.toggle('active');
+  });
+  
+  // Close when clicking outside
+  document.addEventListener('click', (e) => {
+    if (!fabContainer.contains(e.target)) {
+      fabContainer.classList.remove('active');
+    }
+  });
+}
+
