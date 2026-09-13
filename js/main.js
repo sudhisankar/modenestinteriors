@@ -199,7 +199,7 @@ function validateField(field) {
   return valid;
 }
 
-function handleFormSubmit(e) {
+async function handleFormSubmit(e) {
   e.preventDefault();
   const form = e.target;
   const fields = form.querySelectorAll('input[required], select[required], textarea[required]');
@@ -221,11 +221,9 @@ function handleFormSubmit(e) {
   submitBtn.disabled = true;
   submitBtn.textContent = 'Sending…';
 
-  // Simulate async submission (replace with real backend later)
-  setTimeout(() => {
-    submitBtn.disabled = false;
-    submitBtn.textContent = originalText;
+  const actionUrl = form.getAttribute('action');
 
+  const handleSuccess = () => {
     const successEl = form.closest('.form-card')?.querySelector('.form-success');
     const formContent = form.closest('.form-card')?.querySelector('.form-content');
 
@@ -236,7 +234,43 @@ function handleFormSubmit(e) {
     }
 
     form.reset();
-  }, 1200);
+  };
+
+  if (actionUrl) {
+    const formData = new FormData(form);
+    try {
+      const response = await fetch(actionUrl, {
+        method: form.getAttribute('method') || 'POST',
+        body: formData,
+        headers: {
+          'Accept': 'application/json'
+        }
+      });
+      
+      if (response.ok) {
+        handleSuccess();
+      } else {
+        const data = await response.json();
+        let errorMessage = 'Oops! There was a problem submitting your form.';
+        if (data && Object.hasOwn(data, 'errors')) {
+          errorMessage = data.errors.map(error => error.message).join(', ');
+        }
+        alert(errorMessage);
+      }
+    } catch (error) {
+      alert('Oops! There was a problem submitting your form.');
+    } finally {
+      submitBtn.disabled = false;
+      submitBtn.textContent = originalText;
+    }
+  } else {
+    // Simulate async submission (fallback if no backend action provided)
+    setTimeout(() => {
+      submitBtn.disabled = false;
+      submitBtn.textContent = originalText;
+      handleSuccess();
+    }, 1200);
+  }
 }
 
 /* ============================================================

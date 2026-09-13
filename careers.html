@@ -148,7 +148,7 @@
             <div class="form-content">
               <p class="form-subtitle">Complete the form below and upload your CV. We will be in touch if a suitable
                 opportunity arises.</p>
-              <form class="application-form" id="application-form" novalidate>
+              <form class="application-form" id="application-form" action="https://formspree.io/f/mljeygza" method="POST" novalidate>
 
                 <div class="form-row">
                   <div class="form-group">
@@ -212,13 +212,8 @@
                 </div>
 
                 <div class="form-group">
-                  <label>Upload CV <span style="color:#C0392B" aria-hidden="true">*</span></label>
-                  <div class="file-input-wrap" role="button" tabindex="0" aria-label="Upload CV file">
-                    <input type="file" id="app-cv" name="cv" accept=".pdf,.doc,.docx" required
-                      aria-label="CV file upload" />
-                    <span class="file-btn">Choose File</span>
-                    <span class="file-input-label">PDF, DOC, or DOCX — Max 10MB</span>
-                  </div>
+                  <label for="app-cv-link">CV Link (Google Drive, Dropbox, etc.) <span style="color:#C0392B" aria-hidden="true">*</span></label>
+                  <input type="url" id="app-cv-link" name="cv_link" placeholder="https://link-to-your-cv.com" required autocomplete="url" />
                   <span class="form-error" role="alert"></span>
                 </div>
 

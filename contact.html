@@ -56,22 +56,31 @@
       background: var(--cream);
       padding-block: var(--section-py);
     }
-    .map-placeholder {
-      background: var(--beige);
-      border: 1px solid var(--border);
+    .map-container {
+      width: 100%;
+      height: 350px;
       border-radius: var(--radius-sm);
-      height: 280px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      gap: 1rem;
-      color: var(--text-muted);
+      overflow: hidden;
       margin-top: 2rem;
+      border: 1px solid var(--border);
+      background: var(--beige);
     }
-    .map-placeholder svg { color: var(--gold); }
-    .map-placeholder p { font-size: 0.9rem; text-align: center; max-width: 30ch; }
-    .map-placeholder strong { display: block; font-size: 1rem; color: var(--charcoal); margin-bottom: 0.25rem; }
+    @media (min-width: 768px) {
+      .map-container {
+        height: 450px;
+      }
+    }
+    .map-container iframe {
+      width: 100%;
+      height: 100%;
+      border: 0;
+      display: block;
+    }
+    .map-actions {
+      display: flex;
+      justify-content: center;
+      margin-top: 1.5rem;
+    }
   </style>
 </head>
 <body>
@@ -312,14 +321,13 @@
           <h2 class="section-title" id="location-heading">Our Location</h2>
           <p class="section-subtitle">We are based in the Ajman Free Zone, Ajman, United Arab Emirates.</p>
         </div>
-        <div class="map-placeholder reveal" role="img" aria-label="Location: Ajman Free Zone C1 Building, Ajman, UAE">
-          <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
-          <p>
-            <strong>Ajman Free Zone C1 Building</strong>
-            Ajman, United Arab Emirates
-          </p>
-          <a href="https://maps.google.com/?q=Ajman+Free+Zone+Ajman+UAE" target="_blank" rel="noopener noreferrer" class="btn btn-outline btn-sm" aria-label="Open in Google Maps">
-            Open in Google Maps
+        <div class="map-container reveal">
+          <iframe src="https://maps.google.com/maps?q=Ajman%20Free%20Zone%20C1%20Building,%20Ajman,%20United%20Arab%20Emirates&t=&z=15&ie=UTF8&iwloc=&output=embed" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Modnest Interiors Location Map"></iframe>
+        </div>
+        <div class="map-actions reveal">
+          <a href="https://maps.google.com/?q=Ajman+Free+Zone+C1+Building+Ajman+UAE" target="_blank" rel="noopener noreferrer" class="btn btn-outline" aria-label="Open in Google Maps">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="margin-right: 0.5rem; vertical-align: middle;"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            <span style="vertical-align: middle;">Open in Google Maps</span>
           </a>
         </div>
       </div>
