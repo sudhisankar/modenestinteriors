@@ -1581,60 +1581,163 @@ h1, h2, h3, h4 {
    ============================================================ */
 .services-page { padding-block: var(--section-py); background: var(--bg); }
 
-.services-full-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 1.5px;
-  background: var(--border);
-  border: 1px solid var(--border);
-  margin-top: 3.5rem;
-}
-
-.service-full-card {
-  background: var(--white);
-  padding: 2.5rem 2rem;
-  transition: var(--transition);
+/* SERVICES SLIDER */
+.services-slider-wrap {
   position: relative;
+  width: 100%;
+  margin-top: 3.5rem;
+  overflow: hidden;
+  padding-block: 2rem;
 }
 
-.service-full-card::after {
+.services-slider {
+  width: 100%;
+  display: flex;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+.services-slider.no-smooth {
+  scroll-behavior: auto !important;
+}
+.services-slider::-webkit-scrollbar {
+  display: none;
+}
+
+.services-slider-track {
+  display: flex;
+  gap: 2rem;
+  padding: 0 calc(50vw - 35vw); /* Center the slide (70vw width) */
+}
+@media (min-width: 768px) {
+  .services-slider-track {
+    padding: 0 calc(50vw - 20vw); /* Center the slide (40vw width) */
+  }
+}
+@media (min-width: 1200px) {
+  .services-slider-track {
+    padding: 0 calc(50vw - 15vw); /* Center the slide (30vw width) */
+  }
+}
+
+.service-slide {
+  flex: 0 0 70vw;
+  position: relative;
+  border-radius: 1rem;
+  overflow: hidden;
+  scroll-snap-align: center;
+  transition: transform 0.5s cubic-bezier(0.25, 1, 0.5, 1), opacity 0.5s ease, filter 0.5s ease;
+  transform: scale(0.85);
+  opacity: 0.5;
+  filter: grayscale(60%);
+  cursor: pointer;
+  aspect-ratio: 16/9; /* Much less tall */
+  display: flex;
+  align-items: flex-end;
+}
+@media (min-width: 768px) {
+  .service-slide {
+    flex: 0 0 40vw;
+    aspect-ratio: 3/2; /* Half of previous height */
+  }
+}
+@media (min-width: 1200px) {
+  .service-slide {
+    flex: 0 0 30vw;
+  }
+}
+
+.service-slide.active {
+  transform: scale(1);
+  opacity: 1;
+  filter: grayscale(0%);
+  z-index: 2;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.25);
+}
+
+.service-slide-bg {
+  position: absolute;
+  top: 0; left: 0; width: 100%; height: 100%;
+  object-fit: cover;
+  z-index: -2;
+  transition: transform 0.8s ease;
+}
+.service-slide.active:hover .service-slide-bg {
+  transform: scale(1.05);
+}
+.service-slide::before {
   content: '';
   position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 0;
-  height: 2px;
-  background: var(--gold);
-  transition: width var(--transition);
+  top: 0; left: 0; width: 100%; height: 100%;
+  background: linear-gradient(to top, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.3) 50%, rgba(0,0,0,0.1) 100%);
+  z-index: -1;
 }
 
-.service-full-card:hover {
-  background: var(--cream);
-  z-index: 1;
-  box-shadow: var(--shadow-hover);
+.service-slide-content {
+  padding: 1.5rem; /* Reduced padding for smaller height */
+  color: var(--white);
+  transform: translateY(30px);
+  opacity: 0;
+  transition: transform 0.5s ease, opacity 0.5s ease;
 }
-.service-full-card:hover::after { width: 100%; }
+.service-slide.active .service-slide-content {
+  transform: translateY(0);
+  opacity: 1;
+  transition-delay: 0.2s;
+}
 
-.service-full-num {
+.service-slide-num {
   font-family: var(--serif);
-  font-size: 0.85rem;
+  font-size: 0.75rem;
   color: var(--gold);
   letter-spacing: 0.1em;
-  margin-bottom: 1rem;
+  margin-bottom: 0.5rem;
   font-style: italic;
 }
-
-.service-full-name {
+.service-slide-name {
   font-family: var(--serif);
-  font-size: 1.4rem;
-  color: var(--charcoal);
-  margin-bottom: 1rem;
+  font-size: 1.3rem;
+  margin-bottom: 0.5rem;
+  color: var(--white);
+}
+.service-slide-desc {
+  font-size: 0.85rem;
+  line-height: 1.4;
+  color: rgba(255,255,255,0.85);
+  display: -webkit-box;
+  -webkit-line-clamp: 2; /* Truncate text for smaller height */
+  -webkit-box-orient: vertical;
+  overflow: hidden;
 }
 
-.service-full-desc {
-  font-size: 0.9rem;
-  color: var(--text-muted);
-  line-height: 1.8;
+/* Nav buttons */
+.services-slider-nav {
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+  margin-top: 2.5rem;
+}
+.slider-btn {
+  background: transparent;
+  border: 1px solid var(--gold);
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: var(--gold);
+  transition: var(--transition);
+}
+.slider-btn:hover {
+  background: var(--gold);
+  color: var(--white);
+}
+.slider-btn:active {
+  transform: scale(0.95);
 }
 
 /* Sectors on services page */

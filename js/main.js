@@ -24,6 +24,7 @@ document.addEventListener('DOMContentLoaded', () => {
   setActiveNavLink();
   initFileInputs();
   initFAB();
+  initServicesSlider();
 });
 
 /* ============================================================
@@ -309,6 +310,164 @@ function initFAB() {
     if (!fabContainer.contains(e.target)) {
       fabContainer.classList.remove('active');
     }
+  });
+}
+
+/* ============================================================
+   SERVICES SLIDER
+   ============================================================ */
+function initServicesSlider() {
+  const slider = document.getElementById('servicesSlider');
+  if (!slider) return;
+
+  const track = document.getElementById('servicesSliderTrack');
+  const originalSlides = Array.from(slider.querySelectorAll('.service-slide'));
+  const prevBtn = document.getElementById('srvPrevBtn');
+  const nextBtn = document.getElementById('srvNextBtn');
+
+  if (!originalSlides.length) return;
+
+  // Clone slides for infinite loop
+  const numClones = 3; // Clone enough for wide screens
+  // Prepend last 3
+  for (let i = originalSlides.length - numClones; i < originalSlides.length; i++) {
+    const clone = originalSlides[i].cloneNode(true);
+    clone.classList.add('is-clone');
+    track.prepend(clone);
+  }
+  // Append first 3
+  for (let i = 0; i < numClones; i++) {
+    const clone = originalSlides[i].cloneNode(true);
+    clone.classList.add('is-clone');
+    track.appendChild(clone);
+  }
+
+  const allSlides = Array.from(slider.querySelectorAll('.service-slide'));
+  let activeIndex = numClones; // Start at the first original slide
+  let autoScrollInterval;
+  let isJumping = false;
+  let isScrolling = false;
+  let scrollTimeout;
+
+  const getSlideCenter = (slide) => slide.offsetLeft + slide.clientWidth / 2;
+
+  const updateActiveSlide = () => {
+    if (isJumping) return;
+    
+    const sliderCenter = slider.scrollLeft + slider.clientWidth / 2;
+    let minDistance = Infinity;
+    let closestIndex = activeIndex;
+
+    allSlides.forEach((slide, index) => {
+      const distance = Math.abs(sliderCenter - getSlideCenter(slide));
+      if (distance < minDistance) {
+        minDistance = distance;
+        closestIndex = index;
+      }
+    });
+
+    if (closestIndex !== activeIndex) {
+      allSlides[activeIndex]?.classList.remove('active');
+      activeIndex = closestIndex;
+      allSlides[activeIndex]?.classList.add('active');
+    }
+  };
+
+  const jumpToSlide = (index) => {
+    isJumping = true;
+    slider.classList.add('no-smooth');
+    const slide = allSlides[index];
+    const scrollPos = slide.offsetLeft - (slider.clientWidth / 2) + (slide.clientWidth / 2);
+    slider.scrollLeft = scrollPos;
+    
+    allSlides.forEach(s => s.classList.remove('active'));
+    activeIndex = index;
+    allSlides[activeIndex]?.classList.add('active');
+
+    // Force reflow before restoring smooth scroll
+    slider.offsetHeight; 
+    slider.classList.remove('no-smooth');
+    setTimeout(() => { isJumping = false; }, 50);
+  };
+
+  const scrollToSlide = (index) => {
+    if (index < 0 || index >= allSlides.length) return;
+    const slide = allSlides[index];
+    const scrollPos = slide.offsetLeft - (slider.clientWidth / 2) + (slide.clientWidth / 2);
+    slider.scrollTo({ left: scrollPos, behavior: 'smooth' });
+  };
+
+  slider.addEventListener('scroll', () => {
+    if (!isJumping) {
+      requestAnimationFrame(updateActiveSlide);
+      
+      // Infinite scroll boundary checks when scrolling stops
+      isScrolling = true;
+      clearTimeout(scrollTimeout);
+      scrollTimeout = setTimeout(() => {
+        isScrolling = false;
+        // Jump if we landed on a clone
+        if (activeIndex < numClones) {
+          jumpToSlide(activeIndex + originalSlides.length);
+        } else if (activeIndex >= originalSlides.length + numClones) {
+          jumpToSlide(activeIndex - originalSlides.length);
+        }
+      }, 150);
+    }
+  });
+
+  // Init first slide
+  setTimeout(() => {
+    jumpToSlide(numClones);
+  }, 100);
+
+  // Auto scroll
+  const startAutoScroll = () => {
+    stopAutoScroll();
+    autoScrollInterval = setInterval(() => {
+      let nextIndex = activeIndex + 1;
+      scrollToSlide(nextIndex);
+    }, 2000);
+  };
+
+  const stopAutoScroll = () => {
+    if (autoScrollInterval) clearInterval(autoScrollInterval);
+  };
+
+  startAutoScroll();
+
+  slider.addEventListener('mouseenter', stopAutoScroll);
+  slider.addEventListener('mouseleave', startAutoScroll);
+  slider.addEventListener('touchstart', stopAutoScroll, { passive: true });
+  slider.addEventListener('touchend', startAutoScroll, { passive: true });
+
+  if (prevBtn) {
+    prevBtn.addEventListener('click', () => {
+      stopAutoScroll();
+      let prevIndex = activeIndex - 1;
+      scrollToSlide(prevIndex);
+      startAutoScroll();
+    });
+  }
+
+  if (nextBtn) {
+    nextBtn.addEventListener('click', () => {
+      stopAutoScroll();
+      let nextIndex = activeIndex + 1;
+      scrollToSlide(nextIndex);
+      startAutoScroll();
+    });
+  }
+
+  // Click on slide to center it
+  allSlides.forEach((slide, index) => {
+    slide.addEventListener('click', () => {
+      if (index !== activeIndex) {
+        stopAutoScroll();
+        scrollToSlide(index);
+        startAutoScroll();
+      }
+    });
   });
 }
 
