@@ -25,6 +25,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initFileInputs();
   initFAB();
   initServicesSlider();
+  initHeroSlider();
 });
 
 /* ============================================================
@@ -202,6 +203,38 @@ function validateField(field) {
 async function handleFormSubmit(e) {
   e.preventDefault();
   const form = e.target;
+
+  /* ---- Enquiry form → WhatsApp redirect ---- */
+  if (form.classList.contains('enquiry-form')) {
+    const data = Object.fromEntries(new FormData(form).entries());
+
+    // Build a nicely formatted WhatsApp message from whatever the user filled in
+    const lines = ['Hello Modnest Interiors! I would like to enquire about your services.\n'];
+    if (data.fullName)    lines.push(`*Name:* ${data.fullName}`);
+    if (data.phone)       lines.push(`*Phone:* ${data.phone}`);
+    if (data.email)       lines.push(`*Email:* ${data.email}`);
+    if (data.projectType && data.projectType !== 'Select project type') lines.push(`*Project Type:* ${data.projectType}`);
+    if (data.service     && data.service     !== 'Select a service')    lines.push(`*Service Required:* ${data.service}`);
+    if (data.location)    lines.push(`*Project Location:* ${data.location}`);
+    if (data.budget && data.budget !== 'Select a budget range (optional)') lines.push(`*Estimated Budget:* ${data.budget}`);
+    if (data.message)     lines.push(`\n*Message:*\n${data.message}`);
+
+    const text = encodeURIComponent(lines.join('\n'));
+    window.open(`https://wa.me/971585838876?text=${text}`, '_blank', 'noopener,noreferrer');
+
+    // Show success state
+    const successEl = form.closest('.form-card')?.querySelector('.form-success');
+    const formContent = form.closest('.form-card')?.querySelector('.form-content');
+    if (successEl) {
+      if (formContent) formContent.style.display = 'none';
+      successEl.classList.add('active');
+      successEl.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    }
+    form.reset();
+    return;
+  }
+
+  /* ---- All other forms (e.g. application form) ---- */
   const fields = form.querySelectorAll('input[required], select[required], textarea[required]');
   let allValid = true;
 
@@ -272,6 +305,7 @@ async function handleFormSubmit(e) {
     }, 1200);
   }
 }
+
 
 /* ============================================================
    FILE INPUT LABELS
@@ -505,3 +539,44 @@ function initServicesSlider() {
   });
 }
 
+/* ============================================================
+   HERO SLIDER
+   ============================================================ */
+function initHeroSlider() {
+  const slides = document.querySelectorAll('.hero-slide');
+  const dots = document.querySelectorAll('.hero-dots .dot');
+  if (!slides.length) return;
+
+  let currentIdx = 0;
+  let sliderInterval;
+
+  const goToSlide = (idx) => {
+    slides[currentIdx].classList.remove('active');
+    if (dots[currentIdx]) dots[currentIdx].classList.remove('active');
+    
+    currentIdx = (idx + slides.length) % slides.length;
+    
+    slides[currentIdx].classList.add('active');
+    if (dots[currentIdx]) dots[currentIdx].classList.add('active');
+  };
+
+  const nextSlide = () => goToSlide(currentIdx + 1);
+
+  const startSlider = () => {
+    stopSlider();
+    sliderInterval = setInterval(nextSlide, 5000); // 5 seconds
+  };
+
+  const stopSlider = () => {
+    if (sliderInterval) clearInterval(sliderInterval);
+  };
+
+  dots.forEach((dot, idx) => {
+    dot.addEventListener('click', () => {
+      goToSlide(idx);
+      startSlider();
+    });
+  });
+
+  startSlider();
+}

@@ -59,10 +59,16 @@
   <main>
     <!-- ========== HERO ========== -->
     <section class="hero" aria-label="Hero section">
-      <div class="hero-bg">
-        <img src="assets/hero_new.jpg"
-          alt="Luxury contemporary interior designed by Modnest Interiors — warm neutral tones, marble, and premium finishes"
-          fetchpriority="high" />
+      <div class="hero-slider" id="heroSlider">
+        <div class="hero-slide active">
+          <img src="assets/hero_new.jpg" alt="Luxury contemporary interior" fetchpriority="high" />
+        </div>
+        <div class="hero-slide">
+          <img src="assets/hero_hotel_lounge.jpg" alt="Dramatic luxury hotel lounge interior with moody ambiance" />
+        </div>
+        <div class="hero-slide">
+          <img src="assets/sector_residential.jpg" alt="Premium residential space interior" />
+        </div>
       </div>
       <div class="hero-overlay" aria-hidden="true"></div>
       <div class="container">
@@ -78,6 +84,11 @@
               style="color:#fff;border-color:rgba(255,255,255,0.6);">Explore Our Services</a>
           </div>
         </div>
+      </div>
+      <div class="hero-dots" id="heroDots">
+        <span class="dot active" data-index="0"></span>
+        <span class="dot" data-index="1"></span>
+        <span class="dot" data-index="2"></span>
       </div>
       <!-- <div class="hero-scroll" aria-hidden="true">
         <span>Scroll</span>
