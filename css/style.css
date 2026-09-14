@@ -1299,8 +1299,9 @@ p,
   height: 90px;
   width: auto;
   margin-bottom: 1.5rem;
-  filter: brightness(0.92);
-  opacity: 0.9;
+  mix-blend-mode: screen;
+  filter: brightness(1.8) saturate(1.2);
+  opacity: 1;
 }
 
 .footer-brand p {
@@ -2019,7 +2020,7 @@ p,
 
 /* Experience highlight */
 .exp-section {
-  padding-block: var(--section-py);
+  padding-block: clamp(2.5rem, 5vw, 4rem);
   background: var(--charcoal);
 }
 
