@@ -4,7 +4,7 @@
    ============================================================ */
 
 /* ---- Google Fonts ---- */
-@import url('https://fonts.googleapis.com/css2?family=Chilanka&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Inter:wght@300;400;500;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Chilanka&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Inter:wght@300;400;500;600&family=Lato:ital,wght@0,300;0,400;0,700;1,300;1,400&display=swap');
 
 /* ---- CSS Custom Properties ---- */
 :root {
@@ -158,8 +158,10 @@ p,
 .page-hero-subtitle {
   font-family: 'Cormorant Garamond', Georgia, serif;
   font-style: italic;
-  font-weight: 400; /* Regular */
-  font-size: 1.15rem; /* Standard readable size */
+  font-weight: 400;
+  /* Regular */
+  font-size: 1.15rem;
+  /* Standard readable size */
 }
 
 .section-label {
@@ -1095,7 +1097,7 @@ p,
   flex-direction: column;
   justify-content: flex-end;
   transition: transform 0.55s cubic-bezier(0.4, 0, 0.2, 1),
-              opacity 0.55s ease;
+    opacity 0.55s ease;
   z-index: 1;
   background: var(--charcoal);
 }
@@ -1282,6 +1284,7 @@ p,
    FOOTER
    ============================================================ */
 .site-footer {
+  font-family: 'Lato', sans-serif;
   background: var(--dark);
   color: rgba(255, 255, 255, 0.7);
   padding-top: 5rem;
@@ -1296,12 +1299,22 @@ p,
 }
 
 .footer-brand .logo-footer {
-  height: 90px;
-  width: auto;
+  width: 92px;
+  height: 92px;
+  border-radius: 50%;
+  object-fit: cover;
   margin-bottom: 1.5rem;
-  mix-blend-mode: screen;
-  filter: brightness(1.8) saturate(1.2);
-  opacity: 1;
+  background-color: #f9f6f2;
+  border: 2px solid rgba(197, 160, 89, 0.45);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.35), 0 0 0 1px rgba(255, 255, 255, 0.05);
+  display: block;
+  transition: transform var(--transition), border-color var(--transition), box-shadow var(--transition);
+}
+
+.footer-brand .logo-footer:hover {
+  transform: translateY(-2px) scale(1.03);
+  border-color: var(--gold);
+  box-shadow: 0 8px 24px rgba(197, 160, 89, 0.25), 0 0 0 1px rgba(197, 160, 89, 0.3);
 }
 
 .footer-brand p {
@@ -1311,7 +1324,7 @@ p,
 }
 
 .footer-heading {
-  font-family: var(--sans);
+  font-family: 'Lato', sans-serif;
   font-style: normal;
   font-size: 0.72rem;
   letter-spacing: 0.2em;
@@ -1388,7 +1401,7 @@ p,
 }
 
 .footer-copyright {
-  font-family: var(--sans);
+  font-family: 'Lato', sans-serif;
   font-style: normal;
   font-size: 0.8rem;
   color: rgba(255, 255, 255, 0.3);
@@ -2441,6 +2454,7 @@ p,
 }
 
 .contact-detail-label {
+  font-family: var(--serif);
   font-size: 1.125rem;
   letter-spacing: 0.15em;
   text-transform: uppercase;
@@ -2450,6 +2464,7 @@ p,
 }
 
 .contact-detail-value {
+  font-family: var(--serif);
   font-size: 1.125rem;
   color: var(--charcoal);
   line-height: 1.6;
@@ -2472,6 +2487,7 @@ p,
 }
 
 .contact-social h4 {
+  font-family: var(--serif);
   font-size: 1.125rem;
   letter-spacing: 0.15em;
   text-transform: uppercase;
@@ -2499,6 +2515,7 @@ p,
 }
 
 .form-subtitle {
+  font-family: var(--serif);
   font-size: 0.9rem;
   color: var(--text-muted);
   margin-bottom: 2rem;
@@ -2516,6 +2533,7 @@ p,
 
 .form-group label {
   display: block;
+  font-family: var(--serif);
   font-size: 0.8rem;
   font-weight: 500;
   letter-spacing: 0.06em;
@@ -2533,6 +2551,7 @@ p,
   border-radius: var(--radius-sm);
   background: var(--bg);
   color: var(--charcoal);
+  font-family: var(--serif);
   font-size: 0.95rem;
   transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
   outline: none;
@@ -2608,6 +2627,7 @@ p,
 }
 
 .form-error {
+  font-family: var(--serif);
   font-size: 0.78rem;
   color: #C0392B;
   margin-top: 0.35rem;
@@ -2649,6 +2669,7 @@ p,
 }
 
 .success-text {
+  font-family: var(--serif);
   font-size: 0.95rem;
   color: var(--text-muted);
   line-height: 1.7;
@@ -3001,4 +3022,4 @@ p,
   .sectors-grid {
     grid-template-columns: 1fr;
   }
-}
+}

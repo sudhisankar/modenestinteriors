@@ -11,6 +11,7 @@ const COMPANY = {
   address: 'Ajman Free Zone C1 Building, Ajman, United Arab Emirates',
   whatsapp: 'https://wa.me/message/Y6HI7CH6TFZ4J1',
   instagram: 'https://www.instagram.com/modnestinteriors_ae?igsi=MWZ4bWphNGYyOWVhaw==&utm_source=ig_contact_invite',
+  map: 'https://maps.app.goo.gl/tvVFLCNuquipzgvr7?g_st=ac',
 };
 
 /* ---- DOM Ready ---- */
