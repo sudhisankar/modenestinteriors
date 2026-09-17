@@ -27,6 +27,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initFAB();
   initServicesSlider();
   initHeroSlider();
+  initWorksPanels();
 });
 
 /* ============================================================
@@ -580,4 +581,70 @@ function initHeroSlider() {
   });
 
   startSlider();
+}
+
+/* ============================================================
+   WORKS PANELS
+   ============================================================ */
+function initWorksPanels() {
+  const panels = [
+    {
+      btnId: 'exploreResidentialBtn',
+      panelId: 'residential-works-panel',
+      closeId: 'closeResidentialPanel',
+      cardId: 'residential-card'
+    },
+    {
+      btnId: 'exploreCommercialBtn',
+      panelId: 'commercial-works-panel',
+      closeId: 'closeCommercialPanel',
+      cardId: 'commercial-card'
+    },
+    {
+      btnId: 'exploreHospitalityBtn',
+      panelId: 'hospitality-works-panel',
+      closeId: 'closeHospitalityPanel',
+      cardId: 'hospitality-card'
+    }
+  ];
+
+  panels.forEach(({ btnId, panelId, closeId, cardId }) => {
+    const exploreBtn = document.getElementById(btnId);
+    const closeBtn = document.getElementById(closeId);
+    const panel = document.getElementById(panelId);
+
+    if (!exploreBtn || !closeBtn || !panel) return;
+
+    const togglePanel = (show) => {
+      panel.classList.toggle('is-open', show);
+      panel.setAttribute('aria-hidden', !show);
+      exploreBtn.setAttribute('aria-expanded', show);
+      
+      if (show) {
+        setTimeout(() => {
+          panel.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }, 100);
+      } else {
+        setTimeout(() => {
+          const headerH = document.querySelector('.site-header')?.offsetHeight || 80;
+          const target = document.getElementById(cardId);
+          if (target) {
+            const top = target.getBoundingClientRect().top + window.scrollY - headerH - 40;
+            window.scrollTo({ top, behavior: 'smooth' });
+          }
+        }, 100);
+      }
+    };
+
+    exploreBtn.addEventListener('click', (e) => {
+      e.preventDefault();
+      e.stopPropagation();
+      const isExpanded = exploreBtn.getAttribute('aria-expanded') === 'true';
+      togglePanel(!isExpanded);
+    });
+
+    closeBtn.addEventListener('click', () => {
+      togglePanel(false);
+    });
+  });
 }

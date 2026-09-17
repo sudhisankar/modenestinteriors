@@ -208,40 +208,177 @@
         </div>
         <div class="sectors-grid">
 
-          <article class="sector-card reveal reveal-delay-1" aria-label="Residential interior design">
+          <article class="sector-card reveal reveal-delay-1" aria-label="Residential interior design" id="residential-card">
             <img src="assets/sector_residential_villa.jpg" alt="Luxurious villa resort living room interior design in premium blue theme"
               loading="lazy" />
             <div class="sector-overlay" aria-hidden="true"></div>
             <div class="sector-content">
               <!-- <span class="sector-tag">01 — Sector</span> -->
+              <button class="explore-btn" id="exploreResidentialBtn" aria-expanded="false" aria-controls="residential-works-panel" data-tooltip="Explore">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
+              </button>
               <h3 class="sector-title">Residential</h3>
-              <p class="sector-desc">Villas, apartments, private residences, and luxury homes.</p>
+              <p class="sector-desc">Villas, apartments, private residences, </p>
+              <p class="sector-desc">and luxury homes.</p>
             </div>
           </article>
 
-          <article class="sector-card reveal reveal-delay-2" aria-label="Commercial interior design">
+          <article class="sector-card reveal reveal-delay-2" aria-label="Commercial interior design" id="commercial-card">
             <img src="assets/sector_commercial.jpg" alt="Modern commercial office space interior design with open-plan layout"
               loading="lazy" />
             <div class="sector-overlay" aria-hidden="true"></div>
             <div class="sector-content">
               <!-- <span class="sector-tag">02 — Sector</span> -->
+              <button class="explore-btn" id="exploreCommercialBtn" aria-expanded="false" aria-controls="commercial-works-panel" data-tooltip="Explore">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
+              </button>
               <h3 class="sector-title">Commercial</h3>
-              <p class="sector-desc">Offices, retail spaces, showrooms, and business premises.</p>
+              <p class="sector-desc">Offices, retail spaces, showrooms,</p>
+              <p class="sector-desc">and business premises.</p>
             </div>
           </article>
 
-          <article class="sector-card reveal reveal-delay-3" aria-label="Hospitality interior design">
+          <article class="sector-card reveal reveal-delay-3" aria-label="Hospitality interior design" id="hospitality-card">
             <img src="assets/sector_hospitality_cafe.jpg" alt="Premium boutique cafe interior design with vibrant colorful wall and luxury seating"
               loading="lazy" />
             <div class="sector-overlay" aria-hidden="true"></div>
             <div class="sector-content">
               <!-- <span class="sector-tag">03 — Sector</span> -->
+              <button class="explore-btn" id="exploreHospitalityBtn" aria-expanded="false" aria-controls="hospitality-works-panel" data-tooltip="Explore">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
+              </button>
               <h3 class="sector-title">Hospitality</h3>
-              <p class="sector-desc">Hotels, restaurants, cafés, and other hospitality environments.</p>
+              <p class="sector-desc">Hotels, restaurants, cafés, </p>
+              <p class="sector-desc">and other hospitality environments.</p>
             </div>
           </article>
 
         </div>
+
+        <!-- ====== RESIDENTIAL WORKS PANEL ====== -->
+        <div class="res-works-panel" id="residential-works-panel" aria-hidden="true" role="region" aria-label="Residential Work Showcase">
+          <div class="res-works-panel-inner">
+            <div class="res-works-header">
+              <div class="res-works-header-text">
+                <span class="res-works-label">Our </span>
+                <h3 class="res-works-title">Residential Works</h3>
+              </div>
+              <button class="res-works-close" id="closeResidentialPanel" aria-label="Close residential works panel">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+              </button>
+            </div>
+            <div class="res-works-grid">
+              <div class="res-work-item" style="--delay:0s">
+                <div class="res-work-img-wrap">
+                  <img src="assets/res_work_1.jpg" alt="Luxury dining room with circular ceiling lights — Modnest residential project" loading="lazy" />
+                  <div class="res-work-img-overlay">
+                    <!-- <span class="res-work-tag">Dining Room</span> -->
+                  </div>
+                </div>
+              </div>
+              <div class="res-work-item" style="--delay:0.12s">
+                <div class="res-work-img-wrap">
+                  <img src="assets/res_work_2.jpg" alt="Modern bathroom design with warm lighting — Modnest residential project" loading="lazy" />
+                  <div class="res-work-img-overlay">
+                    <!-- <span class="res-work-tag">Bathroom</span> -->
+                  </div>
+                </div>
+              </div>
+              <div class="res-work-item" style="--delay:0.24s">
+                <div class="res-work-img-wrap">
+                  <img src="assets/res_work_3.jpg" alt="Balcony relaxation space with tropical plants — Modnest residential project" loading="lazy" />
+                  <div class="res-work-img-overlay">
+                    <!-- <span class="res-work-tag">Balcony</span> -->
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ====== COMMERCIAL WORKS PANEL ====== -->
+        <div class="res-works-panel" id="commercial-works-panel" aria-hidden="true" role="region" aria-label="Commercial Work Showcase">
+          <div class="res-works-panel-inner">
+            <div class="res-works-header">
+              <div class="res-works-header-text">
+                <span class="res-works-label">Our</span>
+                <h3 class="res-works-title">Commercial Works</h3>
+              </div>
+              <button class="res-works-close" id="closeCommercialPanel" aria-label="Close commercial works panel">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+              </button>
+            </div>
+            <div class="res-works-grid">
+              <div class="res-work-item" style="--delay:0s">
+                <div class="res-work-img-wrap">
+                  <img src="assets/com_work_1.jpg" alt="Modern commercial office space with glass walls — Modnest commercial project" loading="lazy" />
+                  <div class="res-work-img-overlay">
+                    <!-- <span class="res-work-tag">Office Space</span> -->
+                  </div>
+                </div>
+              </div>
+              <div class="res-work-item" style="--delay:0.12s">
+                <div class="res-work-img-wrap">
+                  <img src="assets/com_work_2.jpg" alt="Premium retail store interior with modern lighting — Modnest commercial project" loading="lazy" />
+                  <div class="res-work-img-overlay">
+                    <!-- <span class="res-work-tag">Retail Store</span> -->
+                  </div>
+                </div>
+              </div>
+              <div class="res-work-item" style="--delay:0.24s">
+                <div class="res-work-img-wrap">
+                  <img src="assets/com_work_3.jpg" alt="Luxury boutique wardrobe and showroom space — Modnest commercial project" loading="lazy" />
+                  <div class="res-work-img-overlay">
+                    <!-- <span class="res-work-tag">Showroom</span> -->
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ====== HOSPITALITY WORKS PANEL ====== -->
+        <div class="res-works-panel" id="hospitality-works-panel" aria-hidden="true" role="region" aria-label="Hospitality Work Showcase">
+          <div class="res-works-panel-inner">
+            <div class="res-works-header">
+              <div class="res-works-header-text">
+                <span class="res-works-label">Our </span>
+                <h3 class="res-works-title">Hospitality Works</h3>
+              </div>
+              <button class="res-works-close" id="closeHospitalityPanel" aria-label="Close hospitality works panel">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+              </button>
+            </div>
+            <div class="res-works-grid">
+              <div class="res-work-item" style="--delay:0s">
+                <div class="res-work-img-wrap">
+                  <img src="assets/hos_work_1.jpg" alt="Luxury residential lobby with staircase and pool view — Modnest hospitality project" loading="lazy" />
+                  <div class="res-work-img-overlay">
+                    <!-- <span class="res-work-tag">Lobby</span> -->
+                  </div>
+                </div>
+              </div>
+              <div class="res-work-item" style="--delay:0.12s">
+                <div class="res-work-img-wrap">
+                  <img src="assets/hos_work_2.jpg" alt="Elegant restaurant dining area with circular lighting — Modnest hospitality project" loading="lazy" />
+                  <div class="res-work-img-overlay">
+                    <!-- <span class="res-work-tag">Restaurant</span> -->
+                  </div>
+                </div>
+              </div>
+              <div class="res-work-item" style="--delay:0.24s">
+                <div class="res-work-img-wrap">
+                  <img src="assets/hos_work_3.jpg" alt="Spacious lounge with modern chandelier and garden view — Modnest hospitality project" loading="lazy" />
+                  <div class="res-work-img-overlay">
+                    <!-- <span class="res-work-tag">Lounge</span> -->
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+
       </div>
     </section>
 
@@ -324,7 +461,7 @@
                 aria-hidden="true">
                 <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z" />
                 <circle cx="12" cy="10" r="3" />
-              </svg><span>Ajman Free Zone C1 Building, Ajman, UAE</span></li>
+              </svg><span><a href="https://maps.app.goo.gl/tvVFLCNuquipzgvr7?g_st=ac">Ajman Free Zone C1 Building, Ajman, UAE</span></li>
             <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
                 aria-hidden="true">
                 <path
