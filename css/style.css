@@ -2481,6 +2481,21 @@ p,
   color: var(--gold);
 }
 
+.contact-phone-link {
+  font-family: 'Times New Roman', Times, serif;
+  font-size: 14px;
+  font-weight: 400;
+  font-style: italic;
+  letter-spacing: 0.035em;
+  color: var(--text-body);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.contact-phone-link:hover {
+  color: var(--gold);
+}
+
 .contact-social {
   margin-top: 2.5rem;
   padding-top: 2rem;
@@ -3035,4 +3050,4 @@ p,
   .sectors-grid {
     grid-template-columns: 1fr;
   }
-}
+}
