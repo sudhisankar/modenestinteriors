@@ -1,0 +1,11 @@
+# robots.txt for Modnest Interiors
+User-agent: *
+Allow: /
+
+# Disallow access to source control or private configs if any
+Disallow: /.git/
+Disallow: /.vscode/
+
+# Sitemap location
+# NOTE: If your live production domain differs (e.g. https://modnestinteriors.com), update the URL below accordingly.
+Sitemap: https://modnestinteriors.ae/sitemap.xml

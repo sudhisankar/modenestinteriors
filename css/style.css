@@ -3052,6 +3052,11 @@ p,
   }
 
   /* Hero */
+  .hero {
+    height: 85vh;
+    min-height: 500px;
+  }
+
   .hero-title {
     font-size: clamp(2.2rem, 8vw, 3.5rem);
   }
@@ -3061,6 +3066,10 @@ p,
   }
 
   /* Intro */
+  .intro-image img {
+    height: 450px;
+  }
+
   .intro-grid {
     grid-template-columns: 1fr;
     gap: 2.5rem;
@@ -3283,6 +3292,11 @@ p,
     width: 100%;
     margin-inline: 0;
     border-top: none;
+  }
+
+  .hero {
+    height: 100vh;
+    min-height: 480px;
   }
 
   .hero-title {
